@@ -27,23 +27,33 @@ body {
   border-radius: 50%;
   background-color: #00c1f3;
   color: white;
-  padding: 3px 8px;
+  padding: 6px;
   font-weight: 100;
   text-align: center;
+  width: 28px;
+  display: inline-block;
 }
 
 todo {
 
   .items-placeholder {
+
     background:white;
     border-radius:2px;
     border:1px solid @border-color;
     min-width: 470px;
+    margin: 20px 0;
   }
 
   .item {
-    padding:10px;
+    padding: 20px 10px;
     border-bottom: 1px solid @border-color;
+
+
+    &:hover {
+      background: #f8fbfc;
+    }
+
     &:last-child {
         border-bottom:none;
     }
@@ -91,6 +101,14 @@ todo {
 .btn-save {
   background: #00c1f3;
   color:white;
+}
+
+.btn-remove {
+  border:1px solid transparent;
+  color: #dde3e9;
+  &:hover{
+    color: #2c3843;
+  }
 }
 
 .btn[disabled] {

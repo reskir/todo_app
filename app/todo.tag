@@ -18,7 +18,9 @@
 
         <button class="btn" type="hidden" disabled = { hide: done } > Edit </button>
 
-        <button class="btn" data-balloon="Delete" data-balloon-pos="up" disabled= { hide: done } onclick = { removeItem } ><i class="icon-remove"></i></button>
+        <button class="btn btn-remove" onclick = { removeTodo } >
+          <span data-balloon="Delete" data-balloon-pos="up"> <i class="icon-remove"></i></span>
+        </button>
 
       </form>
 
@@ -68,8 +70,6 @@
     changeItem = (e) => {
       if (this.currentValue) {
         e.item.title = this.currentValue;
-        //console.log(e.target);
-        console.log('changeItem')
         e.target.addAttribute('disabled');
       }
     }
@@ -78,6 +78,17 @@
         this.currentValue = e.target.value;
         //e.target.addAttribute('readonly');
     }
+
+    removeTodo = (item) => {
+
+  		this.items.filter(function (item) {
+
+  			if (item) {
+          console.log(item);
+  				this.items.splice(this.items.indexOf(item), 1);
+  			}
+  		});
+	   };
 
     select = (e) => {
       e.target.focus();
@@ -89,11 +100,6 @@
         return !item.done
       })
     }
-
-    removeItem = (e) => {
-      console.log(e.item)
-    }
-
     // an two example how to filter items on the list
     whatShow = (item) => {
       return !item.hidden
