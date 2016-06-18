@@ -1,0 +1,122 @@
+@body-font-size: 14px;
+@font-family: 'Helvetica Neue', Arial, sans-serif;
+@body-color: #eef4f7;
+@border-color: #d4e3eb;
+@completed-color: #95ce35;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: @font-family;
+  font-size: @body-font-size;
+  background:@body-color;
+  border: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+.todo-container {
+  display: flex;
+  justify-content:center;
+
+
+}
+
+.health-badge {
+  border-radius: 50%;
+  background-color: #00c1f3;
+  color: white;
+  padding: 3px 8px;
+  font-weight: 100;
+  text-align: center;
+}
+
+todo {
+
+  .items-placeholder {
+    background:white;
+    border-radius:2px;
+    border:1px solid @border-color;
+    min-width: 470px;
+  }
+
+  .item {
+    padding:10px;
+    border-bottom: 1px solid @border-color;
+    &:last-child {
+        border-bottom:none;
+    }
+  }
+
+  .input {
+    border: 1px solid  @border-color;
+    padding: 6px;
+    border-radius:2px;
+    font-weight: 400;
+    width: 300px;
+
+    &.auto-width {
+      width:auto;
+    }
+
+    &:disabled {
+      color: @completed-color;
+      text-decoration: line-through;
+    }
+
+  }
+
+}
+
+
+.ellipsis {
+  padding: 0 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+
+.btn {
+  background-color: transparent;
+  border: 1px solid #439cd2;
+  color: #439cd2;
+  padding: 6px 18px;
+  cursor: pointer;
+  outline: none;
+  border-radius: 2px;
+}
+
+.btn-save {
+  background: #00c1f3;
+  color:white;
+}
+
+.btn[disabled] {
+  background-color: #e6e6e6;
+  border: 1px solid #e6e6e6;
+  color: #aaa;
+}
+
+
+.hide {
+  display:none;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+  padding: .2em 0;
+}
+
+.completed {
+  color: #ccc;
+}
+
+label {
+  cursor: pointer;
+}
