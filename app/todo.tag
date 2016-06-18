@@ -42,7 +42,10 @@
   <!-- this script tag is optional -->
   <script>
 
-    this.items = opts.items
+  // Retrieve the object from storage
+  var retrievedObject = localStorage.getItem('items');
+
+    this.items = opts.items;
 
      edit = (e) => {
       this.text = e.target.value
@@ -54,6 +57,8 @@
         this.items.push({ title: this.text })
         this.text = this.input.value = ''
       }
+
+      localStorage.setItem('items', JSON.stringify(this.items));
 
     }
 
@@ -79,14 +84,20 @@
         //e.target.addAttribute('readonly');
     }
 
-    removeTodo = (item) => {
+    removeTodo = (e) => {
+
+      var item = e.item;
+
+      //console.log(item);
 
   		this.items.filter(function (item) {
-
+        console.log(item);
   			if (item) {
-          console.log(item);
+
   				this.items.splice(this.items.indexOf(item), 1);
+
   			}
+
   		});
 	   };
 
@@ -98,7 +109,7 @@
      removeAllDone = (e) => {
       this.items = this.items.filter(function(item){
         return !item.done
-      })
+      });
     }
     // an two example how to filter items on the list
     whatShow = (item) => {
@@ -114,6 +125,10 @@
       item.done = !item.done
       return true
     }
+
+
+
+      // console.log('retrievedObject: ', JSON.parse(retrievedObject);
 
   </script>
 
