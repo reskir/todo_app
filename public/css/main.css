@@ -389,7 +389,6 @@ body {
   font-size: 14px;
   background: #eef4f7;
   border: 0;
-  -webkit-font-smoothing: antialiased;
 }
 .todo-container {
   display: flex;
