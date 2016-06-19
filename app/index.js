@@ -2,16 +2,13 @@ require('riot');
 require('./todo.tag');
 
 riot.mount('*', {
-  title: 'I want to behave!',
+  title: 'My tasks',
   items: [{
-    title: 'Avoid excessive caffeine Avoid excessive caffeine Avoid excessive caffeine',
+    title: 'Learn how to drive and try to get from A to B destinations',
     done: true
   }, {
-    title: 'Hidden item',
-    hidden: true
+    title: 'Read a book'
   }, {
-    title: 'Be less provocative'
-  }, {
-    title: 'Be nice to people'
+    title: 'Buy a milk'
   }]
 });
