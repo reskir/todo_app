@@ -1,7 +1,7 @@
 
 <todo>
 
-  <h4>My tasks  <span class="health-badge"> {items.filter(whatShow).length} </span> </h4>
+  <h4>{this.opts.title}  <span class="health-badge"> {items.filter(whatShow).length} </span> </h4>
 
   <ul class="items-placeholder">
     <li class="item" each={ items.filter(whatShow) }>
@@ -14,11 +14,14 @@
             <div class="control__indicator"></div>
         </label>
 
-        <input name="task" class="input ellipsis" type="text" readonly= { change } onkeyup = { editCurrent } disabled = { done } value={ title }  onfocus={ select } required>
+        <input name="task" class="input ellipsis" type="text" disabled = { done } value = { title } onfocus = {select}  required readonly autocomplete="off">
+        <input type="submit" class="hide">
 
-        <button class="btn" type="hidden" disabled = { hide: done } > Edit </button>
+        <button class="btn" disabled = { hide: done } onclick = { change }> Edit </button>
 
-        <button class="btn btn-remove" onclick = { removeTodo } >
+
+
+        <button class="btn btn-remove" onclick = {removeTodo} >
           <span data-balloon="Delete" data-balloon-pos="up"> <i class="icon-remove"></i></span>
         </button>
 
@@ -29,21 +32,19 @@
 
     <form class="item" onsubmit={ add }>
       <button class="btn"><i class="icon-plus"></i></button>
-      <input name="input" class="input auto-width" placeholder="Add task" onkeyup={ edit }>
+      <input name="input" class="input auto-width" placeholder="Add task" onkeyup={ edit } autocomplete="off">
       <button class="btn btn-save" disabled={ !text }> Save </button>
     </form>
 
   </ul>
 
-  <button class="btn" disabled={ items.filter(onlyDone).length == 0 } onclick={ removeAllDone }>
+  <button class="btn btn-completed" disabled={ items.filter(onlyDone).length == 0 } onclick={ removeAllDone }>
   Clear completed ({ items.filter(onlyDone).length }) </button>
 
 
   <!-- this script tag is optional -->
   <script>
 
-  // Retrieve the object from storage
-  var retrievedObject = localStorage.getItem('items');
 
     this.items = opts.items;
 
@@ -58,51 +59,35 @@
         this.text = this.input.value = ''
       }
 
-      localStorage.setItem('items', JSON.stringify(this.items));
-
     }
 
     change = (e) => {
-
+        let input = e.target.previousElementSibling.previousElementSibling;
         if (!e.item.done) {
-          let input = e.target.previousElementSibling
-          console.log(e.target);
           input.focus();
           input.removeAttribute('readonly');
         }
     }
 
     changeItem = (e) => {
-      if (this.currentValue) {
-        e.item.title = this.currentValue;
-        e.target.addAttribute('disabled');
-      }
+
+        e.item.title = e.target.task.value;
+        e.target.task.setAttribute('readonly', 'enabled');
+
     }
 
     editCurrent = (e) => {
         this.currentValue = e.target.value;
-        //e.target.addAttribute('readonly');
     }
 
     removeTodo = (e) => {
-
       var item = e.item;
-
-      //console.log(item);
-
-  		this.items.filter(function (item) {
-        console.log(item);
-  			if (item) {
-
-  				this.items.splice(this.items.indexOf(item), 1);
-
-  			}
-
-  		});
-	   };
+      this.items.splice(this.items.indexOf(item), 1)
+	  };
 
     select = (e) => {
       e.target.focus();
+      //e.target.removeAttribute('readonly');
       e.target.select();
     }
 
@@ -125,10 +110,6 @@
       item.done = !item.done
       return true
     }
-
-
-
-      // console.log('retrievedObject: ', JSON.parse(retrievedObject);
 
   </script>
 

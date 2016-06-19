@@ -41,7 +41,7 @@ todo {
     background:white;
     border-radius:2px;
     border:1px solid @border-color;
-    min-width: 470px;
+    min-width: 520px;
     margin: 20px 0;
   }
 
@@ -64,7 +64,8 @@ todo {
     padding: 6px;
     border-radius:2px;
     font-weight: 400;
-    width: 300px;
+    background:transparent;
+    width: 330px;
 
     &.auto-width {
       width:auto;
@@ -111,6 +112,11 @@ todo {
   }
 }
 
+.btn-completed {
+  display:block;
+  margin: 0 auto;
+}
+
 .btn[disabled] {
   background-color: #e6e6e6;
   border: 1px solid #e6e6e6;
@@ -122,14 +128,6 @@ todo {
   display:none;
 }
 
-ul {
-  padding: 0;
-}
-
-li {
-  list-style-type: none;
-  padding: .2em 0;
-}
 
 .completed {
   color: #ccc;

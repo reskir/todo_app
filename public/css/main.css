@@ -366,8 +366,12 @@ textarea {
 }
 @font-face {
   font-family: 'FontAwesome';
-  src: url('../css/fonts/fontawesome-webfont.eot');
-  src: url('../css/fonts/fontawesome-webfont.eot') format('embedded-opentype'), url('../css/fonts/fontawesome-webfont.woff') format('woff2'), url('../css/fonts/fontawesome-webfont.woff') format('woff'), url('../css/fonts/fontawesome-webfont.ttf') format('truetype'), url('../css/fonts/fontawesome-webfont.svg') format('svg');
+  src: url('fonts/fontawesome-webfont.eot');
+  src: url('fonts/fontawesome-webfont.eot') format('embedded-opentype'),
+      url('fonts/fontawesome-webfont.woff2') format('woff2'),
+      url('fonts/fontawesome-webfont.woff') format('woff'),
+      url('fonts/fontawesome-webfont.ttf') format('truetype'),
+      url('fonts/fontawesome-webfont.svg') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -409,7 +413,7 @@ todo .items-placeholder {
   background: white;
   border-radius: 2px;
   border: 1px solid #d4e3eb;
-  min-width: 470px;
+  min-width: 520px;
   margin: 20px 0;
 }
 todo .item {
@@ -427,7 +431,8 @@ todo .input {
   padding: 6px;
   border-radius: 2px;
   font-weight: 400;
-  width: 300px;
+  background: transparent;
+  width: 330px;
 }
 todo .input.auto-width {
   width: auto;
@@ -461,6 +466,10 @@ todo .input:disabled {
 }
 .btn-remove:hover {
   color: #2c3843;
+}
+.btn-completed {
+  display: block;
+  margin: 0 auto;
 }
 .btn[disabled] {
   background-color: #e6e6e6;
